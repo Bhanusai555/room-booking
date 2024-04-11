@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Book Your Online</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+    <h1><p style="background-color:#efdc49"; style="text-align: center;">Book Your Room Online</p></h1>
+    <a href="/"><button id="sign-out" class="btn btn-danger" hidden="true">Sign out</button></a>
+    <div id="login-info" hidden="true">
+    <hr>
+    <a href="/"><button id="sign-out" class="btn btn-danger" hidden="true"><i class="fa fa-power-off" aria-hidden="true"></i> Sign out</button></a>
+    <div id="login-info" hidden="true">
+        <hr>
+        <div align="center">
+            <table class="table" style="width:50%">
+                <tr class="table-warning">
+                    <td colspan="2">
+                        <form action="/add_room" method="POST">
+                            <button onclick="startLoad()" type="submit"> Add New Room</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/view_user_bookings" method="POST">
+                            <button onclick="startLoad()" type="submit">Your Bookings</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/" method="GET">
+                            <button class="btn btn-warning form-control" onclick="startLoad()" type="submit" value="Back to Home">Back to Home </button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div align="center">
+                            <td>
+                                <form action="/delete_booking" method="POST">
+                                    <input type="hidden" name="booking_id" value="{{ b.key.id }}">
+                                    <input type="hidden" name="request_from" value="room_bookings">
+                                    <input type="hidden" name="room_id" value="{{ b['room_id'] }}">
+                                    <button type="submit" class="btn btn-danger form-control" onclick="startLoad()" value=""> Delete</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="/edit_booking" method="POST">
+                                    <input type="hidden" name="booking_id" value="{{ b.key.id }}">
+                                    <input type="hidden" name="room_id" value="{{ b['room_id'] }}">
+                                    <button type="submit" onclick="startLoad()" class="btn btn-info"> Edit </button>
+                                </form>
+                            </td>
+                    </tr>
+            </table>
+    </div>
+</body>
+
+</html>
